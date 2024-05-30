@@ -1,0 +1,9 @@
+[submodule "nut-base"]
+	path = nut-base
+	url = git@github.com:francitoshi/nut-base.git
+[submodule "nut-core"]
+	path = nut-core
+	url = git@github.com:francitoshi/nut-core.git
+[submodule "nut-finance"]
+	path = nut-finance
+	url = git@github.com:francitoshi/nut-finance.git
