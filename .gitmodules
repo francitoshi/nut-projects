@@ -7,3 +7,6 @@
 [submodule "nut-finance"]
 	path = nut-finance
 	url = git@github.com:francitoshi/nut-finance.git
+[submodule "nut-headless"]
+	path = nut-headless
+	url = git@github.com:francitoshi/nut-headless.git
