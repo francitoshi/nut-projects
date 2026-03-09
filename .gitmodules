@@ -10,3 +10,6 @@
 [submodule "nut-headless"]
 	path = nut-headless
 	url = git@github.com:francitoshi/nut-headless.git
+[submodule "nut-lame"]
+	path = nut-lame
+	url = git@github.com:francitoshi/nut-lame.git
