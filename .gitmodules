@@ -13,3 +13,6 @@
 [submodule "nut-lame"]
 	path = nut-lame
 	url = git@github.com:francitoshi/nut-lame.git
+[submodule "nut-desktop"]
+	path = nut-desktop
+	url = git@github.com:francitoshi/nut-desktop.git
