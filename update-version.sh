@@ -41,7 +41,7 @@ update_version "nut-core/build.gradle"
 update_version "nut-finance/build.gradle"
 update_version "nut-headless/build.gradle"
 update_version "nut-lame/build.gradle"
-#update_version "nut-desktop/build.gradle"
+update_version "nut-desktop/build.gradle"
 
 
 echo "✅ version updated to $NEW_VERSION in all subprojects"
