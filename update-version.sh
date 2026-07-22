@@ -43,6 +43,8 @@ update_version "nut-headless/build.gradle"
 update_version "nut-lame/build.gradle"
 update_version "nut-desktop/build.gradle"
 
+set -x
+
 for i in nut-base nut-core nut-finance nut-headless nut-lame nut-desktop
 do
 	(
