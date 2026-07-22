@@ -43,7 +43,25 @@ update_version "nut-headless/build.gradle"
 update_version "nut-lame/build.gradle"
 update_version "nut-desktop/build.gradle"
 
+for i in nut-base nut-core nut-finance nut-headless nut-lame nut-desktop
+do
+	(
+		echo "--------------------"
+		echo "$i"
+		echo "--------------------"
+		cd $i
+		git add -A .
+		git status
+		
+		read
+		
+		git commit -m "update nut version" || true
+		git tag -a ${NEW_VERSION} -m "Version ${NEW_VERSION}" || git push --tags || git push
+	)
+	git add $i
+done
 
 echo "✅ version updated to $NEW_VERSION in all subprojects"
 
 echo "execute: git submodule foreach git commit -m \"update nut version\"; git submodule foreach git tag -a ${NEW_VERSION} -m \"Version ${NEW_VERSION}\"; git submodule foreach git push --tags; git submodule foreach git push"
+
