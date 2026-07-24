@@ -67,5 +67,5 @@ done
 
 echo "✅ version updated to $NEW_VERSION in all subprojects"
 
-echo "execute: git submodule foreach git commit -m \"update nut version\"; git submodule foreach git tag -a ${NEW_VERSION} -m \"Version ${NEW_VERSION}\"; git submodule foreach git push --tags; git submodule foreach git push"
+echo "execute: git commit -m \"update nut version\"; git tag -a ${NEW_VERSION} -m \"Version ${NEW_VERSION}\"; git push --tags; git push"
 
