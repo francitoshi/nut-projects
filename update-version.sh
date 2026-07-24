@@ -59,6 +59,8 @@ do
 		
 		git commit -m "update nut version" || true
 		git tag -a ${NEW_VERSION} -m "Version ${NEW_VERSION}" || git push --tags || git push
+		git push
+		git push --tags
 	)
 	git add $i
 done
