@@ -16,3 +16,12 @@
 [submodule "nut-desktop"]
 	path = nut-desktop
 	url = git@github.com:francitoshi/nut-desktop.git
+[submodule "nut-base-kernel"]
+	path = nut-base-kernel
+	url = git@github.com:francitoshi/nut-base-kernel.git
+[submodule "nut-base-cli"]
+	path = nut-base-cli
+	url = git@github.com:francitoshi/nut-base-cli.git
+[submodule "nut-base-kripto"]
+	path = nut-base-kripto
+	url = git@github.com:francitoshi/nut-base-kripto.git
