@@ -28,20 +28,20 @@ update_version()
     cp "$file" "${file}.bak"
 
     # Replace only the value of the given variable
-    sed -i -E "s/(^version[[:space:]]*=[[:space:]]*')[^']+(')/\1${NEW_VERSION}\2/" "$file"
+    sed -i -E "s/(^nutVersion[[:space:]]*=[[:space:]]*')[^']+(')/\1${NEW_VERSION}\2/" "$file"
 
-    cat "$file" | grep -e "^version *= *"
+    cat "$file" | grep -e "^nutVersion *= *"
     rm "${file}.bak"
     echo "✔ Updated version in: $file"
 	    
 }
 
-update_version "nut-base/build.gradle"
-update_version "nut-core/build.gradle"
-update_version "nut-finance/build.gradle"
-update_version "nut-headless/build.gradle"
-update_version "nut-lame/build.gradle"
-update_version "nut-desktop/build.gradle"
+update_version "nut-base/build.properties"
+update_version "nut-core/build.properties"
+update_version "nut-finance/build.properties"
+update_version "nut-headless/build.properties"
+update_version "nut-lame/build.properties"
+update_version "nut-desktop/build.properties"
 
 set -x
 
