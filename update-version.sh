@@ -2,6 +2,9 @@
 
 set -euo pipefail
 
+set -x
+
+
 if [ "$#" -ne 1 ]; then
     echo "Usage: $0 <new_version>"
     exit 1
@@ -25,25 +28,35 @@ update_version()
         return
     fi
 
+    if ! grep -qE "^[[:space:]]*nutVersion[[:space:]]*=" "$file"; then
+        echo "Warning: nutVersion not found in $file, skipping"
+        return
+    fi
+
     cp "$file" "${file}.bak"
 
-    # Replace only the value of the given variable
-    sed -i -E "s/(^nutVersion[[:space:]]*=[[:space:]]*')[^']+(')/\1${NEW_VERSION}\2/" "$file"
+    # Replace only the value of the given variable (with or without quotes)
+    sed -i -E "s|^([[:space:]]*nutVersion[[:space:]]*=[[:space:]]*)(['\"]?)[^'\"#]*(['\"]?)|\1\2${NEW_VERSION}\3|" "$file"
 
-    cat "$file" | grep -e "^nutVersion *= *"
+    NEW_VALUE="$(sed -nE "s/^[[:space:]]*nutVersion[[:space:]]*=[[:space:]]*['\"]?([^'\"#[:space:]]+).*/\1/p" "$file")"
+
+    if [ "$NEW_VALUE" != "$NEW_VERSION" ]; then
+        mv "${file}.bak" "$file"
+        echo "Error: failed to update nutVersion in $file (found: '${NEW_VALUE}')"
+        exit 1
+    fi
+
     rm "${file}.bak"
+    grep -E "^[[:space:]]*nutVersion[[:space:]]*=" "$file"
     echo "✔ Updated version in: $file"
-	    
 }
 
-update_version "nut-base/build.properties"
-update_version "nut-core/build.properties"
-update_version "nut-finance/build.properties"
-update_version "nut-headless/build.properties"
-update_version "nut-lame/build.properties"
-update_version "nut-desktop/build.properties"
-
-set -x
+update_version "nut-base/gradle.properties"
+update_version "nut-core/gradle.properties"
+update_version "nut-finance/gradle.properties"
+update_version "nut-headless/gradle.properties"
+update_version "nut-lame/gradle.properties"
+update_version "nut-desktop/gradle.properties"
 
 for i in nut-base nut-core nut-finance nut-headless nut-lame nut-desktop
 do
